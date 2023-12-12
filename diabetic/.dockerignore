@@ -1,0 +1,7 @@
+Dockerfile
+.dockerignore
+.gitignore
+src/setupProxy.js
+
+node_modules
+

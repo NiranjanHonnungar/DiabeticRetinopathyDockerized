@@ -1,0 +1,36 @@
+# version: "2.23.3"
+# services:
+#   server:
+#     build: ./api
+#     ports:
+#       - "5000:5000"
+#     volumes:
+#       - ./api:/app
+#     environment:
+#       FLASK_ENV: development
+#   webapp:
+#     build: ./diabetic
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - ./diabetic:/app
+#     depends_on:
+#       - server
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    image: flaskapp
+    ports:
+      - "5000:5000"
+  client:
+    build:
+      context: ./diabetic
+      dockerfile: Dockerfile
+    image: reactapp
+    ports:
+      - "3000:80"
+    depends_on:
+      - api
+    
